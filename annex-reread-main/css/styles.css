@@ -84,6 +84,11 @@ body {
     border-bottom: 2px solid #D35400;
 }
 
+.column-1 img {
+    width: 100px;
+    height: 100px;
+}
+
 
 /* Style the topnav links */
 
@@ -260,7 +265,8 @@ input[type=submit] {
 
 input[type=text],
 input[type=email],
-input[type=password] {
+input[type=password],
+select {
     padding: 5px 15px;
     text-decoration: none;
     border-radius: 5px;

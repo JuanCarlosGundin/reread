@@ -46,7 +46,7 @@
         </div>
     </div>
 <?php
-$book= mysqli_query($conn,"SELECT books.Title,books.Description,authors.name 
+$book= mysqli_query($conn,"SELECT books.Title,books.Description,authors.name,books.img 
 FROM books 
 INNER JOIN booksauthors ON books.Id=booksauthors.BookId 
 INNER JOIN authors ON booksauthors.AuthorId=authors.Id
@@ -59,6 +59,7 @@ WHERE books.Title like '%$filtro%';");
                     <th>Titulo: </th>
                     <th>Descripción:</th>
                     <th>Autor:</th>
+                
                 </tr>
             <?php
                     foreach($book as $book){?>
@@ -67,6 +68,7 @@ WHERE books.Title like '%$filtro%';");
                     <td><?php echo $book["Title"]?></td>
                     <td><?php echo $book["Description"]?></td>
                     <td><?php echo $book["name"]?></td>
+                   <!-- <td><img src="../img/<?php //echo $book["img"]?>"></td> -->
                 </tr>
                 <?php }?>
                 <!-- Recoger libros de la base de datos -->
