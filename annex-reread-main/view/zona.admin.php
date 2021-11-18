@@ -17,9 +17,13 @@
     <?php
     include '../services/connection.php';
     session_start();
-    /* Controla que la sesión esté iniciada */
-    if (!isset($_SESSION['email'])) {
+    $filtro="";
+    if (isset($_POST['email'])) {
         header('Location: login.html');
+    }
+    /* Controla que la sesión esté iniciada */
+    if (isset($_POST['titulo'])) {
+        $filtro=$_POST['titulo'];
     }
     ?>
     <ul class="padding-lat">
@@ -41,15 +45,30 @@
             </form>
         </div>
     </div>
-
+<?php
+$book= mysqli_query($conn,"SELECT books.Title,books.Description,authors.name 
+FROM books 
+INNER JOIN booksauthors ON books.Id=booksauthors.BookId 
+INNER JOIN authors ON booksauthors.AuthorId=authors.Id
+WHERE books.Title like '%$filtro%';"); 
+?>
     <div class="row padding-top-less padding-lat">
         <div class="column-1">
             <table>
-                <tr>
-                    <th>Titulo</th>
-                    <th>Descripción</th>
-                    <th>Autor</th>
+                 <tr>
+                    <th>Titulo: </th>
+                    <th>Descripción:</th>
+                    <th>Autor:</th>
                 </tr>
+            <?php
+                    foreach($book as $book){?>
+                <tr>
+                    
+                    <td><?php echo $book["Title"]?></td>
+                    <td><?php echo $book["Description"]?></td>
+                    <td><?php echo $book["name"]?></td>
+                </tr>
+                <?php }?>
                 <!-- Recoger libros de la base de datos -->
  
             </table>
