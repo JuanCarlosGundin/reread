@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "reread";
+$db = "reread-admin";
 
 // Crear la conexión
 $conn = mysqli_connect($host, $user, $pass, $db);

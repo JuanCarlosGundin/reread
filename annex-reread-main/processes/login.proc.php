@@ -13,6 +13,8 @@ if (mysqli_num_rows($user) == 1) {
     // coincidencia de credenciales
     session_start();
     $_SESSION['email']=$email;
+    $cadena = substr ( $_SESSION['email'], 0, -10);
+    $_SESSION['email']=$cadena;
     header("location: ../view/zona.admin.php");
 } else {
     // usuario o contraseña erróneos
