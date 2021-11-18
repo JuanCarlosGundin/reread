@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+    include '../services/connection.php';
+    session_start();
+    /* Controla que la sesión esté iniciada */
+    if (!isset($_SESSION['email'])) {
+        header('Location: login.html');
+    }
+    ?>
 
 <head>
     <title>Re-Read libros</title>
